@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameJamOne", "Assembly-CSharp.csproj", "{A59600AC-1E37-53A9-FD9D-033B32E5F831}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameJamOne", "Assembly-CSharp-Editor.csproj", "{68542B07-D841-6FF3-78CC-8ECF9CEF2901}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A59600AC-1E37-53A9-FD9D-033B32E5F831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59600AC-1E37-53A9-FD9D-033B32E5F831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59600AC-1E37-53A9-FD9D-033B32E5F831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59600AC-1E37-53A9-FD9D-033B32E5F831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68542B07-D841-6FF3-78CC-8ECF9CEF2901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68542B07-D841-6FF3-78CC-8ECF9CEF2901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68542B07-D841-6FF3-78CC-8ECF9CEF2901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68542B07-D841-6FF3-78CC-8ECF9CEF2901}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
