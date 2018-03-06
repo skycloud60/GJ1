@@ -10,7 +10,7 @@ public class Customers : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        seats = GameObject.FindGameObjectsWithTag("Seat");
 	}
 	
 	// Update is called once per frame

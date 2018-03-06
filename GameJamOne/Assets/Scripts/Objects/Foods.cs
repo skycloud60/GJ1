@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Foods : MonoBehaviour {
 
- 
+    private Cook sr_cook;
 
     public enum foodType
     {
@@ -25,7 +25,7 @@ public class Foods : MonoBehaviour {
 
     private void Awake()
     {
-
+        sr_cook = gameObject.GetComponent<Cook>();
     }
 
     // Use this for initialization
@@ -34,7 +34,7 @@ public class Foods : MonoBehaviour {
         isReady = false;
         chopProgress = 0;
         chopFinish = 6;
-        foodDuration = 12.0f;
+        foodDuration = 20.0f;
 	}
 	
 	// Update is called once per frame
@@ -58,23 +58,23 @@ public class Foods : MonoBehaviour {
         //}
 
         // SET CONDITION FOR NPC COLLISION
-        //if (other.gameObject.tag == NPC)
+        //if (other.gameObject.tag == "Player1" || other.gameObject.tag == "Player2")
+        //{
+        //
+        //}
 
     }
 
 
     public void getChopped()
     {
-        if (chopProgress < chopFinish)
-        {
-            chopProgress += 1;
-        }
-
+        chopProgress += 1;
+        
         if (chopProgress >= chopFinish)
         {                                                                                      
            isReady = true;
+           //sr_cook.ToggleDone(true);
         }
-
 
         
     }
@@ -98,12 +98,6 @@ public class Foods : MonoBehaviour {
             thisFoodType = foodType.pancakes;
         }
 
-    } 
-      
-    public void ToggleReady(bool tof)
-    {
-        isReady = tof;
     }
-    
 
 }

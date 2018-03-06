@@ -104,25 +104,20 @@ public class PlayerController : MonoBehaviour
                 //ThrowFood(currentFood, throwPos.position, aMultiplier, fMultiplier);
                 if (throwCharge <= 0.9f)
                 {
-
                     throwCharge = Mathf.Clamp(throwCharge, 0.55f, 0.9f);
-                    Debug.Log(throwCharge);
-                    ThrowFood(currentFood, throwPos.position, aMultiplier, fMultiplier * throwCharge);
-                   // throwCharge = 0;
-                   // initiateCharge = false;
+                    ThrowFood(currentFood, throwPos.position, throwAngle, throwForce * throwCharge);
                 }
+
                 if (throwCharge > 0.9f && throwCharge <= 1.35f)
                 {
                    throwCharge = Mathf.Clamp(throwCharge, 0.9f, 1.3f);
-                   Debug.Log(throwCharge);
-                   ThrowFood(currentFood, throwPos.position, aMultiplier, fMultiplier * throwCharge);
+                   ThrowFood(currentFood, throwPos.position, throwAngle, throwForce * throwCharge);
                 }
                 
                 if (throwCharge > 1.35f)
                 {
                    throwCharge = Mathf.Clamp(throwCharge, 1.35f, 1.4f);
-                   Debug.Log(throwCharge);
-                   ThrowFood(currentFood, throwPos.position, aMultiplier, fMultiplier * throwCharge);
+                   ThrowFood(currentFood, throwPos.position, throwAngle, throwForce * throwCharge);
                 }
             }
 
@@ -183,12 +178,12 @@ public class PlayerController : MonoBehaviour
             initiateCharge = false;
             canThrow = false;
             sr_cook.ToggleDone(false);
-            sr_cook.ToggleChopDone(0);
             ResetAim();
             
             //throw sound
         }
 
+        sr_cook.ToggleChopDone(0);
         throwCharge = 0;
         initiateCharge = false;
     }

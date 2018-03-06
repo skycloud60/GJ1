@@ -16,8 +16,8 @@ public class Cook : MonoBehaviour {
     public GameObject foodX;
     public GameObject foodY;
     public Image chopDisplay;
-    public int chopCount;
-    public int chopMax;
+    public float fillCurrent;
+    public float fillMax;
     
     public bool doneChopping;
     
@@ -43,26 +43,34 @@ public class Cook : MonoBehaviour {
     // Use this for initialization
     void Start () {
         doneChopping = false;
-        chopCount = 0;
-        chopMax = 6;
+        fillCurrent = 0;
+        fillMax = 6f;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+        if(sr_pController.currentlyOnStove != null)
+        {
+            chopDisplay.fillAmount = fillCurrent / fillMax;
         
+        }
 
         //--------------------------------------------------
         // COOK BUTTONS
         //--------------------------------------------------
-
 
         if (XCI.GetButtonDown(XboxButton.A, controller))
         {
             if (sr_pController.currentlyOnStove)
             {
                 Foods temp = sr_pController.currentlyOnStove.GetComponent<Foods>();
-                if (!temp.isReady)
+                if (temp.isReady)
+                {
+                    ToggleDone(true);
+                }
+                else if (!temp.isReady)
                 {
                     if ((int)temp.thisFoodType == 0)
                     {
@@ -71,14 +79,10 @@ public class Cook : MonoBehaviour {
                     if ((int)temp.thisFoodType == 1)
                     {
                         temp.getChopped();
-                        chopCount += 1;
-                        chopDisplay.fillAmount = chopCount / chopMax;
+                        fillCurrent += 1f;
                     }
                 }
-                else if (temp.isReady)
-                {
-                    ToggleDone(true);
-                }
+
             }
 
             else
@@ -94,7 +98,6 @@ public class Cook : MonoBehaviour {
                 Foods temp = sr_pController.currentlyOnStove.GetComponent<Foods>();
                 if (!temp.isReady)
                 {
-                    chopDisplay.fillAmount = sr_food.chopProgress / sr_food.chopFinish;
                     if ((int)temp.thisFoodType == 0)
                     {
                         temp.SetFoodType(2);
@@ -102,6 +105,7 @@ public class Cook : MonoBehaviour {
                     if ((int)temp.thisFoodType == 2)
                     {
                         temp.getChopped();
+                        fillCurrent += 1;
                     }
                 }
                 else if (temp.isReady)
@@ -123,7 +127,7 @@ public class Cook : MonoBehaviour {
                 Foods temp = sr_pController.currentlyOnStove.GetComponent<Foods>();
                 if (!temp.isReady)
                 {
-                    chopDisplay.fillAmount = sr_food.chopProgress / sr_food.chopFinish;
+                    //chopDisplay.fillAmount = sr_food.chopProgress / sr_food.chopFinish;
                     if ((int)temp.thisFoodType == 0)
                     {
                         temp.SetFoodType(3);
@@ -131,6 +135,7 @@ public class Cook : MonoBehaviour {
                     if ((int)temp.thisFoodType == 3)
                     {
                         temp.getChopped();
+                        fillCurrent += 1;
                     }
                 }
                 else if (temp.isReady)
@@ -152,7 +157,7 @@ public class Cook : MonoBehaviour {
                 Foods temp = sr_pController.currentlyOnStove.GetComponent<Foods>();
                 if (!temp.isReady)
                 {
-                    chopDisplay.fillAmount = sr_food.chopProgress / sr_food.chopFinish;
+                    //chopDisplay.fillAmount = sr_food.chopProgress / sr_food.chopFinish;
                     if ((int)temp.thisFoodType == 0)
                     {
                         temp.SetFoodType(4);
@@ -160,6 +165,7 @@ public class Cook : MonoBehaviour {
                     if ((int)temp.thisFoodType == 4)
                     {
                         temp.getChopped();
+                        fillCurrent += 1;
                     }
                 }
                 else if (temp.isReady)
@@ -190,11 +196,11 @@ public class Cook : MonoBehaviour {
     public void ToggleDone(bool tof)
     {
         doneChopping = tof;
-       
     }
+
     public void ToggleChopDone(int val)
     {
-        chopCount = val;
+        fillCurrent = val;
     }
 
 
