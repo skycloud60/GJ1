@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         // COOK BUTTONS
         //--------------------------------------------------
 
+
         if (XCI.GetButtonDown(XboxButton.A, controller))
         {
             if (currentlyOnStove)

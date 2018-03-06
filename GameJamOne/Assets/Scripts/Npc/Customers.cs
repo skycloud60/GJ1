@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Customers : MonoBehaviour {
 
+    public GameObject spawnPoint;
+    public GameObject exitPoint;
+    public GameObject[] seats;
+
 	// Use this for initialization
 	void Start () {
 		

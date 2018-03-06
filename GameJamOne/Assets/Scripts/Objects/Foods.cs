@@ -12,17 +12,22 @@ public class Foods : MonoBehaviour {
         empty = 4
     }
 
-    public float lifeSpan;
+    private Customers customer;
+    //private CapsuleCollider capCol;
+
     private GameObject food;
+    public float lifeSpan;
     public int chopsToCook;
     public int cookStatus;
     public bool isReady;
 
     public foodType thisFoodType;
 
+
+
     private void Awake()
     {
-        
+        customer = GetComponent<Customers>();
     }
 
     // Use this for initialization
@@ -30,8 +35,7 @@ public class Foods : MonoBehaviour {
         isReady = false;
         cookStatus = 0;
         chopsToCook = 9;
-        //food = this.gameObject;
-        //lifeSpan = 2.0f;
+
 	}
 	
 	// Update is called once per frame
@@ -54,7 +58,9 @@ public class Foods : MonoBehaviour {
         //}
 
         // SET CONDITION FOR NPC COLLISION
-        //if (other.gameObject.tag == NPcC
+        //if (other.gameObject.tag == NPC)
+
+        
     }
     public void Chop()
     {
