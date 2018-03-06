@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 717b78e735592c34e86644d7f8a46a7b
+timeCreated: 1520299926
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Apron1
+    100002: Character
+    100004: //RootNode
+    100006: Chest
+    100008: Eyes
+    100010: Hat1
+    100012: Head
+    100014: Head_Nurbs
+    100016: Knife1
+    100018: L_Feet
+    100020: L_Hand
+    100022: L_Hand_Nurbs
+    100024: L_Hip
+    100026: L_Knee
+    100028: L_Leg_Nurbs
+    100030: Neck
+    100032: Pelvis
+    100034: Pelvis_Nurbs
+    100036: R_Feet
+    100038: R_Hand
+    100040: R_Hand_Nurbs
+    100042: R_Hip
+    100044: R_Knee
+    100046: R_Leg_Nurbs
+    100048: Root
+    100050: Root_Nurbs
+    100052: Spatula1
+    100054: Top_of_Head
+    100056: transform1
+    100058: transform2
+    100060: transform3
+    100062: transform4
+    100064: transform5
+    100066: transform6
+    100068: transform7
+    400000: Apron1
+    400002: Character
+    400004: //RootNode
+    400006: Chest
+    400008: Eyes
+    400010: Hat1
+    400012: Head
+    400014: Head_Nurbs
+    400016: Knife1
+    400018: L_Feet
+    400020: L_Hand
+    400022: L_Hand_Nurbs
+    400024: L_Hip
+    400026: L_Knee
+    400028: L_Leg_Nurbs
+    400030: Neck
+    400032: Pelvis
+    400034: Pelvis_Nurbs
+    400036: R_Feet
+    400038: R_Hand
+    400040: R_Hand_Nurbs
+    400042: R_Hip
+    400044: R_Knee
+    400046: R_Leg_Nurbs
+    400048: Root
+    400050: Root_Nurbs
+    400052: Spatula1
+    400054: Top_of_Head
+    400056: transform1
+    400058: transform2
+    400060: transform3
+    400062: transform4
+    400064: transform5
+    400066: transform6
+    400068: transform7
+    2100000: lambert1
+    2300000: Apron1
+    2300002: Eyes
+    2300004: Hat1
+    2300006: Knife1
+    2300008: Spatula1
+    3300000: Apron1
+    3300002: Eyes
+    3300004: Hat1
+    3300006: Knife1
+    3300008: Spatula1
+    4300000: Character
+    4300002: Apron1
+    4300004: Hat1
+    4300006: Eyes
+    4300008: Knife1
+    4300010: Spatula1
+    7400000: Idle2
+    9500000: //RootNode
+    13700000: Character
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
