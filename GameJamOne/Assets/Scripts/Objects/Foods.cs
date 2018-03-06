@@ -6,11 +6,14 @@ public class Foods : MonoBehaviour {
 
     public float lifeSpan;
     private GameObject food;
+    public int chopsToCook;
 
 	// Use this for initialization
 	void Start () {
-        lifeSpan = 2.0f;
+
         food = this.gameObject;
+        chopsToCook = 10;
+        lifeSpan = 2.0f;
 	}
 	
 	// Update is called once per frame
