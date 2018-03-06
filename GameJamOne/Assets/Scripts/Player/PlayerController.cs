@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
-     public XboxController controller;
+    public XboxController controller;
 
     // THROW VARS
     //throw angle must be between 0-1
@@ -31,17 +32,23 @@ public class PlayerController : MonoBehaviour {
 
     protected Foods foodScript;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        //setFoodType = currentFood.GetComponent<Foods>();
+    }
 
-        //foodScript = GetComponent;
+    // Use this for initialization
+
+    void Start()
+    {
+
         throwCooldown = 0;
         throwForce = 500.0f;
         isCooking = false;
         currentFood = null;
-    
-            
-	}
+
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -56,73 +63,137 @@ public class PlayerController : MonoBehaviour {
         }
 
         //--------------------------------------------------
+        // COOK BUTTONS
+        //--------------------------------------------------
+
+        if (XCI.GetButtonDown(XboxButton.A, controller))
+        {
+            if (currentlyOnStove)
+            {
+                Foods temp = currentlyOnStove.GetComponent<Foods>();
+                if((int)temp.thisFoodType == 4)
+                {
+                    temp.SetFoodType(0);
+                }
+                if ((int)temp.thisFoodType == 0)
+                {
+                    temp.Chop();
+                }
+            }
+            else
+            {
+                SetFood(foodA, 0);                
+            }
+        }
+        if (XCI.GetButtonDown(XboxButton.B, controller))
+        {
+            if (currentlyOnStove)
+            {
+                Foods temp = currentlyOnStove.GetComponent<Foods>();
+                if ((int)temp.thisFoodType == 4)
+                {
+                    temp.SetFoodType(1);
+                }
+                if ((int)temp.thisFoodType == 1)
+                {
+                    temp.Chop();
+                }
+            }
+            else
+            {
+                SetFood(foodB, 1);
+            }
+        }
+        if (XCI.GetButtonDown(XboxButton.X, controller))
+        {
+            if (currentlyOnStove)
+            {
+                Foods temp = currentlyOnStove.GetComponent<Foods>();
+                if ((int)temp.thisFoodType == 4)
+                {
+                    temp.SetFoodType(2);
+                }
+                if ((int)temp.thisFoodType == 2)
+                {
+                    temp.Chop();
+                }
+            }
+            else
+            {
+                SetFood(foodX, 2);
+            }
+        }
+        if (XCI.GetButtonDown(XboxButton.Y, controller))
+        {
+            if (currentlyOnStove)
+            {
+                Foods temp = currentlyOnStove.GetComponent<Foods>();
+                if ((int)temp.thisFoodType == 4)
+                {
+                    temp.SetFoodType(3);
+                }
+                if ((int)temp.thisFoodType == 3)
+                {
+                    temp.Chop();
+                }
+            }
+            else
+            {
+                SetFood(foodY, 3);
+            }
+        }
+
+
+        //--------------------------------------------------
         // LEFT ANALOG STICK AIM
         //--------------------------------------------------
 
         Vector2 leftInput = new Vector2(XCI.GetAxisRaw(XboxAxis.LeftStickX, controller),
                                         XCI.GetAxisRaw(XboxAxis.LeftStickY, controller));
 
-        if (XCI.GetButtonDown(XboxButton.A, controller))
-        {
-            Debug.Log("hello");
-            SetFood(foodA);
-        }
-        if (XCI.GetButtonDown(XboxButton.B, controller))
-        {
-            SetFood(foodB);
-        }
-        if (XCI.GetButtonDown(XboxButton.X, controller))
-        {
-            SetFood(foodX);
-        }
-        if (XCI.GetButtonDown(XboxButton.Y, controller))
-        {
-            SetFood(foodY);
-        }
+
 
         if (leftInput.x != 0 || leftInput.y != 0)
         {
-        aim.x = leftInput.x;
-        aim.y = 0;
-        aim.z = leftInput.y;
-        aim.Normalize();
+            aim.x = leftInput.x;
+            aim.y = 0;
+            aim.z = leftInput.y;
+            aim.Normalize();
 
-        Vector3 up = new Vector3(0, 0.2f);
+            Vector3 up = new Vector3(0, 0.2f);
 
-        Debug.DrawRay(this.transform.position + up, aim);
+            Debug.DrawRay(this.transform.position + up, aim);
 
 
-        charging = true;
-        if (charging)
-        {
-            throwCharge += Time.deltaTime;
-            //canThrow = true;
-        }
-
-        if (throwCooldown <= 0 && ((XCI.GetButton(XboxButton.LeftBumper, controller)) || (XCI.GetButton(XboxButton.RightBumper, controller))))
-        {
-            if (throwCharge <= 0.5)
+            charging = true;
+            if (charging)
             {
-                throwAngle = 0.1f;
-                DeliverFoodLoad(currentFood, throwPos.position, 0.1f);
-                Debug.Log("shot charge 1!");
+                throwCharge += Time.deltaTime;
+                if (currentFood != null)
+                {
+                    canThrow = true;
+                }
+
             }
 
-            if (throwCharge > 1)
+            if (throwCooldown <= 0 && ((XCI.GetButton(XboxButton.LeftBumper, controller)) || (XCI.GetButton(XboxButton.RightBumper, controller))))
             {
-                DeliverFoodLoad(currentFood, throwPos.position, 0.3f);
-                Debug.Log("shot charge 2!");
+                if (throwCharge <= 0.5)
+                {
+                    ThrowFood(currentFood, throwPos.position, 0.1f);
+                }
+
+                if (throwCharge > 0.5f && throwCharge < 1.5f)
+                {
+                    ThrowFood(currentFood, throwPos.position, 0.3f);
+                }
+
+                if (throwCharge >= 1.5f)
+                {
+                    ThrowFood(currentFood, throwPos.position, 0.5f);
+                }
+
             }
-
-            if (throwCharge > 2)
-            {
-                DeliverFoodLoad(currentFood, throwPos.position, 0.5f);
-                Debug.Log("overthrown!");
-            }
-
-        }
-
-
         }
 
         else if (leftInput.x == 0 || leftInput.y == 0)
@@ -141,23 +212,29 @@ public class PlayerController : MonoBehaviour {
         throwCharge = 0;
         throwAngle = 0;
     }
+    
 
-    private void DeliverFoodLoad(GameObject food, Vector3 sPos, float throwAngle)
+    private void ThrowFood(GameObject food, Vector3 sPos, float throwAngle)
     {
         Vector3 actualAim = aim;
         actualAim.y = throwAngle;
         actualAim.Normalize();
         // GameObject newFood = Instantiate(currentFood, sPos, Quaternion.Euler(actualAim)) as GameObject;
-        currentlyOnStove.transform.position = throwPos.position;
-        currentlyOnStove.transform.Rotate(Vector3.right, throwAngle);
-        currentlyOnStove.GetComponent<Rigidbody>().AddForce(actualAim * throwForce);
-        throwCooldown = 1.5f;
-        currentFood = null;
-        ResetAim();
-        
+
+        if (currentlyOnStove != null && currentlyOnStove.GetComponent<Foods>().isReady)
+        {
+            currentlyOnStove.transform.position = throwPos.position;
+            currentlyOnStove.transform.Rotate(Vector3.right, throwAngle);
+            currentlyOnStove.GetComponent<Rigidbody>().AddForce(actualAim * throwForce);
+            throwCooldown = 1.0f;
+            currentFood = null;
+            currentlyOnStove = null;
+            ResetAim();
+            //throw sound
+        }
     }
 
-    private void SetFood(GameObject food)
+    private void SetFood(GameObject food, int val)
     {
         isCooking = true;
         canThrow = true;
@@ -166,11 +243,10 @@ public class PlayerController : MonoBehaviour {
         GameObject setFood = Instantiate(currentFood, cookPos.transform) as GameObject;
         setFood.transform.position = cookPos.transform.position;
         currentlyOnStove = setFood;
-
+        currentlyOnStove.GetComponent<Foods>().SetFoodType(val);
+        //set food plop sound?
     }
 
-    private void CookFood()
-    {
+  
 
-    }
 }
