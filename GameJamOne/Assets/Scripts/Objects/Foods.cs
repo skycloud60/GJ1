@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum foodType
+{
+    empty = 0,
+    chicken = 1,
+    steak  = 2,
+    burger = 3,
+    pancakes = 4
+}
+
 public class Foods : MonoBehaviour {
 
     private Cook sr_cook;
 
-    public enum foodType
-    {
-        empty = 0,
-        chicken = 1,
-        steak  = 2,
-        salad = 3,
-        pancakes = 4
-    }
 
     public foodType thisFoodType;
 
@@ -91,7 +92,7 @@ public class Foods : MonoBehaviour {
         }
         if (val == 3)
         {
-            thisFoodType = foodType.salad;
+            thisFoodType = foodType.burger;
         }
         if (val == 4)
         {

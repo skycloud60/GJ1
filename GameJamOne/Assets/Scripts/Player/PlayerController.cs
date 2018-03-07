@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 aim; //throw angle must be between 0-1
     public Transform throwPos;
     public GameObject cookPos;
+    public Text aScore;
 
     public float aMultiplier;
     public float fMultiplier;
@@ -31,10 +32,13 @@ public class PlayerController : MonoBehaviour
     public GameObject currentlyOnStove;
     public GameObject currentFood;
 
+    public int currScore;
+
+    public int Score;
+
     private void Awake()
     {
         sr_cook = gameObject.GetComponent<Cook>();
-        //sr_food = gameObject.GetComponent<Foods>();
 
         if (gameObject.tag == "Player1")
         {
@@ -57,12 +61,14 @@ public class PlayerController : MonoBehaviour
         throwForce = 425.0f;
         throwAngle = 0.5f;
         currentFood = null;
-
+        currScore = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        aScore.text = currScore.ToString();
+
         if (throwCooldown > 0)
         {
             throwCooldown -= Time.deltaTime;
@@ -71,8 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             throwCooldown = 0;
         }
-
-
 
         //--------------------------------------------------
         // LEFT ANALOG STICK AIM
@@ -101,7 +105,6 @@ public class PlayerController : MonoBehaviour
             if (initiateCharge)
             {
 
-                //ThrowFood(currentFood, throwPos.position, aMultiplier, fMultiplier);
                 if (throwCharge <= 0.9f)
                 {
                     throwCharge = Mathf.Clamp(throwCharge, 0.55f, 0.9f);
@@ -142,10 +145,7 @@ public class PlayerController : MonoBehaviour
 
         if (initiateCharge)
         {
-        
            throwCharge += Time.deltaTime;
-           //aMultiplier += Time.deltaTime;
-           //fMultiplier += Time.deltaTime;
         }
     }
 
@@ -187,6 +187,11 @@ public class PlayerController : MonoBehaviour
         throwCharge = 0;
         initiateCharge = false;
     }
-      
+
+    public void Scoring(int val)
+    {
+        currScore += val;
+    }
+
 
 }

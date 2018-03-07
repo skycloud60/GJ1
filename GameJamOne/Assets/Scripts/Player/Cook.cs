@@ -187,6 +187,16 @@ public class Cook : MonoBehaviour {
         sr_pController.currentFood = food;
 
         GameObject setFood = Instantiate(sr_pController.currentFood, sr_pController.cookPos.transform) as GameObject;
+        
+        if( sr_pController.tag == "Player1")
+        {
+            setFood.gameObject.tag = "Player1";
+        }
+        if (sr_pController.tag == "Player2")
+        {
+            setFood.gameObject.tag = "Player2";
+        }
+       
         setFood.transform.position = sr_pController.cookPos.transform.position;
         sr_pController.currentlyOnStove = setFood;
         sr_pController.currentlyOnStove.GetComponent<Foods>().SetFoodType(val);
