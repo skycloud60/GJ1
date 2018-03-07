@@ -9,24 +9,27 @@ public class NavMesh : MonoBehaviour {
 	public Transform midPoint;
 	public Transform endPoint;
 	private NavMeshAgent NMA;
-	private bool gotFood;
+
+	public GameObject npc;
+	public Transform lookAtPos;
 
 	// Use this for initialization
 	void Start () {
 		NMA = GetComponent<NavMeshAgent> ();
 		NMA.destination = midPoint.position;
+		npc = this.gameObject;
+		lookAtPos = GameObject.FindGameObjectWithTag ("LookAtPos").transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Leave ();
+
+		npc.transform.LookAt (lookAtPos);
 	}
 
 
-	void Leave()
+	 public void Leave()
 	{
-		if (gotFood == true) {
 			NMA.destination = endPoint.position;
-		}
 	}
 }

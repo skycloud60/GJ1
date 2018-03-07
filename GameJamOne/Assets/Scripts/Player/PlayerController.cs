@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
     public GameObject cookPos;
     public Text aScore;
 
-    public float aMultiplier;
-    public float fMultiplier;
     public int throwPower;
     public float throwCooldown;
     public float throwAngle;
